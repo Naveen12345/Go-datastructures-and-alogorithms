@@ -1,0 +1,197 @@
+1)
+
+package main
+
+import (
+    "fmt"
+    "math/rand"
+    
+)
+
+func main() {
+
+    fmt.Println(rand.Intn(100))
+    fmt.Println(rand.Intn(100))
+    fmt.Println(rand.Intn(100))
+    fmt.Println(rand.Intn(100))
+    fmt.Println(rand.Intn(100))
+    fmt.Println(rand.Intn(100))
+    fmt.Println(rand.Intn(100))
+    fmt.Println(rand.Intn(100))
+    fmt.Println()
+
+}
+
+OUTPUT:-
+
+81
+87
+47
+59
+81
+18
+25
+40
+
+
+2)
+
+
+package main
+
+import (
+    "fmt"
+    "math/rand"
+    
+)
+
+func main() {
+ 
+
+    fmt.Println(rand.Float64())
+
+    fmt.Println((rand.Float64()*5)+5, )
+    fmt.Println((rand.Float64() * 5))
+
+    fmt.Println((rand.Float64()*5)+5,)
+    fmt.Println((rand.Float64() * 5) + 5)
+
+    fmt.Println((rand.Float64()*5)+5,)
+    fmt.Println((rand.Float64() * 5) + 5)
+    fmt.Println()
+
+ 
+}
+
+OUTPUT:-
+
+0.6046602879796196
+9.702545440225062
+3.322800266092452
+7.1885709359349015
+7.123187485356329
+8.434115364335547
+5.328185096087381
+
+3)
+
+
+package main
+
+import (
+    "fmt"
+    "math/rand"
+    "time"
+)
+        
+func main() {
+  var i int
+    rand.Seed(time.Now().UnixNano())
+    min := 10
+    max := 30
+    for i=0 ; i<=10 ; i++ {
+    fmt.Println(rand.Intn(max - min + 1) + min)
+}}
+
+
+OUTPUT:-
+
+27
+11
+17
+11
+25
+29
+20
+24
+27
+10
+17
+
+4)
+
+package main
+
+import (
+    "fmt"
+    "math/rand"
+ 
+)
+        
+func main() {
+  var i int
+    
+    for i=0 ; i<=5 ; i++ {
+    fmt.Println(rand.Intn(1000))
+}}
+
+OUTPUT:-
+
+
+81
+887
+847
+59
+81
+318
+
+5)
+
+package main 
+
+import ( 
+	"fmt"
+	"math/rand"
+	"time"
+) 
+
+func main() { 
+ 
+	fmt.Println(rand.Intn(200)) 
+	fmt.Println(rand.Intn(200)) 
+	fmt.Println(rand.Intn(200)) 
+	fmt.Println() 
+
+	fmt.Println(rand.Float64()) 
+
+	fmt.Println((rand.Float64() * 8) + 7) 
+	fmt.Println((rand.Float64() * 8) + 7) 
+	fmt.Println() 
+
+	x1 := rand.NewSource(time.Now().UnixNano()) 
+	y1 := rand.New(x1) 
+	
+	fmt.Println(y1.Intn(200)) 
+	fmt.Println(y1.Intn(200)) 
+	fmt.Println() 
+
+	x2 := rand.NewSource(55) 
+	y2 := rand.New(x2) 
+	fmt.Println(y2.Intn(200)) 
+	fmt.Println(y2.Intn(200)) 
+	fmt.Println() 
+	
+	x3 := rand.NewSource(5) 
+	y3 := rand.New(x3) 
+	fmt.Println(y3.Intn(200)) 
+	fmt.Println(y3.Intn(200)) 
+} 
+
+OUTPUT:-
+
+81
+87
+47
+
+0.4377141871869802
+10.397099976570125
+12.494584582936875
+
+0
+128
+
+112
+164
+
+26
+36
