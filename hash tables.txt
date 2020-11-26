@@ -1,0 +1,98 @@
+1)
+
+package main
+ 
+import (
+"fmt"
+)
+ 
+func main() {
+    var country map[int]string
+    country = make(map[int] string)
+    country[1]="India"
+    country[2]="China"
+    country[3]="Pakistan"
+    country[4]="Germany"
+    country[5]="Australia"
+    country[6]="Indonesia"
+    for i, j := range country {
+        fmt.Printf("Key: %d Value: %s\n", i, j)
+    }
+}
+
+OUTPUT:-
+
+Key: 1 Value: India
+Key: 2 Value: China
+Key: 3 Value: Pakistan
+Key: 4 Value: Germany
+Key: 5 Value: Australia
+Key: 6 Value: Indonesia
+
+
+2)
+
+
+
+package main
+ 
+import (
+"fmt"
+)
+ 
+func main() {
+    var fruit map[int]string
+    fruit = make(map[int] string)
+    fruit[1]="Mango"
+    fruit[2]="Apple"
+    fruit[3]="Orange"
+    fruit[4]="Pineapple"
+    fruit[5]="pomegranate"
+    fruit[6]="Banana"
+    for i, j := range fruit {
+        fmt.Printf("Key: %d Value: %s\n", i, j)
+    }
+}
+
+OUTPUT:-
+
+Key: 5 Value: pomegranate
+Key: 6 Value: Banana
+Key: 1 Value: Mango
+Key: 2 Value: Apple
+Key: 3 Value: Orange
+Key: 4 Value: Pineapple
+
+3)
+
+
+
+package main
+ 
+import (
+"fmt"
+)
+ 
+func main() {
+    var subject map[int]string
+    subject = make(map[int] string)
+    subject[1]="Mathematics"
+    subject[2]="Science"
+    subject[3]="Social"
+    subject[4]="English"
+    subject[5]="Biology"
+    subject[6]="Hindi"
+    for i, j := range subject {
+        fmt.Printf("Key: %d Value: %s\n", i, j)
+    }
+}
+
+OUTPUT:-
+
+
+Key: 4 Value: English
+Key: 5 Value: Biology
+Key: 6 Value: Hindi
+Key: 1 Value: Mathematics
+Key: 2 Value: Science
+Key: 3 Value: Social

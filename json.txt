@@ -1,0 +1,149 @@
+1)
+package main 
+import ( 
+	"fmt"
+	"encoding/json"
+) 
+
+type Person struct{
+	Name string 
+	Age int
+	Address string 
+} 
+
+func main() { 
+
+	P1 := Person{"Naveen", 25, "Hyderabad"} 
+
+	P_enc, err := json.Marshal(P1) 
+	
+	if err != nil { 
+		
+ 
+		fmt.Println(err) 
+	} 
+	
+
+	fmt.Println(string(P_enc)) 
+
+} 
+
+OUTPUT:-
+
+{"Name":"Naveen","Age":25,"Address":"Hyderabad"}
+
+
+2)
+
+
+package main 
+import ( 
+	"fmt"
+	"encoding/json"
+) 
+
+type Person struct{
+	Name string 
+	Age int
+	Address string 
+} 
+
+func main() { 
+
+	P1 := []Person{{Name :"Naveen",Age :25, Address :"Hyderabad"} ,
+	         {Name :"Harish",Age :23, Address :"Bangalore"},
+	         {Name :"John",Age :28, Address :"Chennai"},
+	   }
+
+	P_enc, err := json.Marshal(P1) 
+	
+	if err != nil { 
+		
+ 
+		fmt.Println(err) 
+	} 
+	
+
+	fmt.Println(string(P_enc)) 
+
+} 
+
+OUTPUT:-
+
+[{"Name":"Naveen","Age":25,"Address":"Hyderabad"},
+{"Name":"Harish","Age":23,"Address":"Bangalore"},
+{"Name":"John","Age":28,"Address":"Chennai"}]
+
+
+3)
+
+
+package main 
+
+import ( 
+	"fmt"
+	"encoding/json"
+) 
+ 
+type Human struct{ 
+	
+ 
+	Name string 
+	Address string 
+	Age int
+} 
+
+
+func main() { 
+	
+
+	var human1 Human 
+ 
+	Data := []byte(`{ 
+		"Name": "Naveen", 
+		"Address": "Hyderabad", 
+		"Age": 25 
+	}`) 
+	
+ 
+	err := json.Unmarshal(Data, &human1) 
+	
+	if err != nil { 
+
+			fmt.Println(err) 
+	} 
+
+	fmt.Println("Struct is:", human1) 
+	fmt.Printf("%s lives in %s.\n", human1.Name, human1.Address) 
+	 
+	var human2 []Human 
+ 
+	Data2 := []byte(` 
+	[ 
+		{"Name": "John", "Address": "Delhi", "Age": 28}, 
+		{"Name": "peter", "Address": "Bangalore", "Age": 26}, 
+		{"Name": "Samson", "Address": "Goa", "Age": 27} 
+	]`) 
+ 
+	err2 := json.Unmarshal(Data2, &human2) 
+	
+		if err2 != nil { 
+	
+
+			fmt.Println(err2) 
+		} 
+
+	for i := range human2{ 
+	
+		fmt.Println(human2[i]) 
+	} 
+} 
+
+OUTPUT:-
+
+
+Struct is: {Naveen Hyderabad 25}
+Naveen lives in Hyderabad.
+{John Delhi 28}
+{peter Bangalore 26}
+{Samson Goa 27}

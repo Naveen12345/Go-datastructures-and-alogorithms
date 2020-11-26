@@ -1,0 +1,114 @@
+1)
+package main
+
+import (
+    "fmt"
+)
+
+func fibonacci(k int) int {
+if k<=1{
+ return 1
+ }
+ return fibonacci(k-1)+fibonacci(k-2)
+}
+
+func main() {
+var m int = 5
+for m=0; m < 10; m++ {
+var fib = fibonacci(m)
+fmt.Println(fib)
+ }
+}
+
+
+OUTPUT:-
+
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+
+2)
+
+package main
+import "fmt"
+
+func Rescuvie(n int) int {
+    if n == 0 {
+        return 1
+    }
+
+    return n * Rescuvie(n-1)
+}
+
+func main() {
+    fmt.Println(Rescuvie(4))
+}
+
+
+OUTPUT:-
+
+24
+
+3)
+
+package main
+import "fmt"
+
+func RescuvieTail(n int, a int) int {
+    if n == 1 {
+        return a
+    }
+
+    return RescuvieTail(n-1, a*n)
+}
+
+
+func main() {
+    fmt.Println(RescuvieTail(6, 7))
+}
+
+
+OUTPUT:-
+
+5040
+
+
+4)
+
+package main
+import "fmt"
+
+
+func F(n int, a1, a2 int) int {
+    if n == 0 {
+        return a1
+    }
+
+    return F(n-1, a2, a1+a2)
+
+}
+
+func main() {
+    fmt.Println(F(1, 1, 1))
+    fmt.Println(F(2, 1, 1))
+    fmt.Println(F(3, 1, 1))
+    fmt.Println(F(4, 1, 1))
+    fmt.Println(F(5, 1, 1))
+}
+
+
+OUTPUT:-
+
+
+1
+2
+3
+5
+8

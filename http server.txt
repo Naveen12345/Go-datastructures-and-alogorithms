@@ -1,0 +1,85 @@
+1)package main
+ 
+import (
+	"io"
+	"net/http"
+)
+ 
+func hello(w http.ResponseWriter, r *http.Request) {
+	io.WriteString(w, "Hello world!")
+}
+ 
+func main() {
+	http.HandleFunc("/", hello)
+	http.ListenAndServe(":8000", nil)
+}
+
+OUTPUT:-
+
+http://localhost:8000
+
+Hello world!
+
+
+2)
+
+package main
+ 
+import (
+	"io"
+	"net/http"
+)
+ 
+func hello(w http.ResponseWriter, r *http.Request) {
+	io.WriteString(w, "Hello my first webserver!!")
+}
+ 
+func main() {
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", hello)
+	http.ListenAndServe(":8000", mux)
+}
+
+OUTPUT:-
+
+
+http://localhost:8000
+
+Hello my first webserver!!
+
+3)
+
+<html>
+  <head>
+    <title>My Web server</title>
+  </head>
+  <body>
+    <h2>My Website</h2>
+  </body>
+</html>
+
+NOTE:-
+
+we save this file in a default static folder. In order to display the webpage in our web server.
+
+
+
+package main
+import ("fmt"
+         "net/http"
+          "log")
+func main() {
+    fileServer := http.FileServer(http.Dir("./static")) 
+    http.Handle("/", fileServer) 
+
+    fmt.Printf("Starting server at port 8080\n")
+    if err := http.ListenAndServe(":8080", nil); err != nil {
+        log.Fatal(err)
+    }
+}
+
+OUTPUT:-
+
+http://localhost:8000
+
+My Website
