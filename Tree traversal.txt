@@ -1,0 +1,124 @@
+1)Inorder
+
+
+package main
+ 
+import ("fmt")
+ 
+type Node struct {
+	val   int
+	l  *Node
+	r *Node
+}
+ 
+func Inorder(root *Node) {
+	if root == nil {
+		return
+	}
+ 
+	Inorder(root.l)
+	fmt.Printf("%d ", root.val)
+	Inorder(root.r)
+}
+ 
+func main() {
+	
+ 
+	root := &Node{11, nil, nil}
+	root.l = &Node{22, nil, nil}
+	root.r = &Node{33, nil, nil}
+	root.l.l = &Node{44, nil, nil}
+	root.l.r = &Node{55, nil, nil}
+	root.r.r = &Node{66, nil, nil}
+	root.l.l.l = &Node{77, nil, nil}
+ 
+	fmt.Println("Inorder Traversal: ")
+	Inorder(root)
+}
+
+OUTPUT:-
+
+Inorder Traversal: 
+77 44 22 55 11 33 66  
+
+
+2)
+
+
+package main
+ 
+import (
+	"fmt"
+)
+ 
+type Node struct {
+	val   int
+	l *Node
+	r *Node
+}
+ 
+func Preorder(root *Node) {
+	if root != nil {
+		fmt.Printf("%d ", root.val)
+		Preorder(root.l)
+		Preorder(root.r)
+	}
+}
+ 
+func main() {
+ 	root := &Node{11, nil, nil}
+	root.l = &Node{22, nil, nil}
+	root.r = &Node{33, nil, nil}
+	root.l.l = &Node{44, nil, nil}
+	root.l.r = &Node{55, nil, nil}
+	root.r.r = &Node{66, nil, nil}
+	root.l.l.l = &Node{77, nil, nil}
+ 
+	fmt.Println("Preorder Traversal : ")
+	Preorder(root)
+}
+
+
+Preorder Traversal : 
+11 22 44 77 55 33 66 
+
+3)
+
+
+package main
+
+import "fmt"
+
+type Node struct {
+	val   int
+	l  *Node
+	r *Node
+}
+
+func postOrder(root *Node) {
+	if root == nil {
+		return
+	}
+
+	postOrder(root.l)
+	postOrder(root.r)
+	fmt.Printf("%d ", root.val)
+}
+
+func main() {
+	root := &Node{11, nil, nil}
+	root.l = &Node{22, nil, nil}
+	root.r = &Node{33, nil, nil}
+	root.l.l = &Node{44, nil, nil}
+	root.l.r = &Node{55, nil, nil}
+	root.r.l = &Node{66, nil, nil}
+	root.r.r = &Node{77, nil, nil}
+
+	fmt.Println("Post Order Traversal: ")
+	postOrder(root)
+}
+
+OUTPUT:-
+
+Post Order Traversal: 
+44 55 22 66 77 33 11

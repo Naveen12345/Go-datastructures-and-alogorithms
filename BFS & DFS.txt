@@ -1,0 +1,171 @@
+1)
+
+package main
+
+import (
+	"container/list"
+	"fmt"
+)
+
+type node struct {
+	Id      string
+	friends map[string]*node
+}
+
+
+func Nodes(n *node) []*node {
+
+	visited := make(map[string]*node)
+		queue := list.New()
+	queue.PushBack(n)
+
+	visited[n.Id] = n
+
+	for queue.Len() > 0 {
+		qnode := queue.Front()
+
+		for id, node := range qnode.Value.(*node).friends {
+			if _, ok := visited[id]; !ok {
+				visited[id] = node
+				queue.PushBack(node)
+			}
+		}
+		queue.Remove(qnode)
+	}
+
+	nodes := make([]*node, 0)
+
+	for _, node := range visited {
+		nodes = append(nodes, node)
+	}
+
+	return nodes
+}
+
+func main() {
+	node1 := &node{Id: "node1", friends: make(map[string]*node)}
+	node2 := &node{Id: "node2", friends: make(map[string]*node)}
+	node3 := &node{Id: "node3", friends: make(map[string]*node)}
+
+
+	node2.friends[node1.Id] = node1
+	
+	node3.friends[node2.Id] = node2
+	node1.friends[node3.Id] = node3
+
+	
+	root := &node{Id: "root", friends: make(map[string]*node)}
+	n := make(map[string]*node)
+	n[root.Id] = root
+	n[root.Id].friends[node1.Id] = node1
+	n[root.Id].friends[node2.Id] = node2
+	n[root.Id].friends[node3.Id] = node3
+
+	nodes := Nodes(root)
+	for _, node := range nodes {
+		fmt.Printf("%+v\n", node.Id)
+	}
+}
+
+OUTPUT:-
+
+node3
+node1
+root
+node2
+
+2)
+
+
+package main
+
+import "fmt"
+
+type node struct {
+    value string
+    left  *node
+    right *node
+}
+
+func insert(n *node, v string) *node {
+    if n == nil {
+        return &node{v, nil, nil}
+    } else if v <= n.value {
+        n.left = insert(n.left, v)
+    } else {
+        n.right = insert(n.right, v)
+    }
+    return n
+}
+
+
+func preorder(n *node) {
+    if n != nil {
+        fmt.Printf(n.value + " ")
+        preorder(n.left)
+        preorder(n.right)
+    }
+}
+
+
+func inorder(n *node) {
+    if n != nil {
+        inorder(n.left)
+        fmt.Printf(n.value + " ")
+        inorder(n.right)
+    }
+}
+
+
+func postorder(n *node) {
+    if n != nil {
+        postorder(n.left)
+        postorder(n.right)
+        fmt.Printf(n.value + " ")
+    }
+}
+
+
+func breadth(n *node) {
+    if n != nil {
+        s := []*node{n}
+        for len(s) > 0 {
+            current_node := s[0]
+            fmt.Printf(current_node.value + " ")
+            s = s[1:]
+            if current_node.left != nil {
+                s = append(s, current_node.left)
+            }
+            if current_node.right != nil {
+                s = append(s, current_node.right)
+            }
+        }
+    }
+}
+
+func main() {
+    var root *node
+    root = insert(root, "F")
+    root = insert(root, "D")
+    root = insert(root, "H")
+    root = insert(root, "B")
+    root = insert(root, "E")
+    root = insert(root, "G")
+    root = insert(root, "J")
+    fmt.Println("Pre-order DFS traversal")
+    preorder(root)
+    fmt.Println("\nIn-order DFS traversal")
+    inorder(root)
+    fmt.Println("\nPost-order DFS traversal")
+    postorder(root)
+
+}
+
+OUTPUT:-
+
+Pre-order DFS traversal
+F D B E H G J 
+In-order DFS traversal
+B D E F G H J 
+Post-order DFS traversal
+B E D G J H F 
