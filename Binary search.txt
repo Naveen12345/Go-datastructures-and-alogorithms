@@ -1,0 +1,45 @@
+**Binary search
+
+package main
+
+import "fmt"
+
+func main() {
+    searchField := []int{2, 5, 8, 12, 16, 23, 38, 56, 72, 91}
+    searchNumber := 23
+
+    fmt.Println("Searching list of numbers: ", searchField)
+    fmt.Println(" number: ", searchNumber)
+
+    numFound := false
+
+    result, _ := binarySearch2(searchField, len(searchField), searchNumber, numFound)
+    fmt.Println("Your number is found in position: ", result)
+    
+}
+
+func binarySearch2(a []int, field int, search int, numFound bool) (result int, searchCount int) {
+
+    searchCount, i := 0, 0
+    for !numFound {
+        searchCount++
+        mid := i + (field-i)/2
+        if search == a[mid] {
+            numFound = true
+            result = mid
+            return result, searchCount
+        } else if search > a[mid] {
+
+            return binarySearch2(a, field, search, numFound)
+        }
+        field = mid
+        return binarySearch2(a, field, search, numFound)
+    }
+    return result, searchCount
+}
+
+Output:-
+
+Searching list of numbers:  [2 5 8 12 16 23 38 56 72 91]
+ number:  23
+Your number is found in position:  5

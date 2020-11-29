@@ -1,0 +1,28 @@
+**bubble sort:-
+
+package main
+import "fmt"
+func BubbleSort(numbers []int) []int {
+
+   for i := len(numbers); i > 0; i-- {
+
+      for j := 1; j < i; j++ {
+
+         if numbers[j-1] > numbers[j] {
+            intermediate := numbers[j]
+            numbers[j] = numbers[j-1]
+            numbers[j-1] = intermediate
+                        }
+             }
+      }
+   return numbers
+ }
+func main() {
+    fmt.Printf("Bubble sort:")
+    a := []int{23,43,65,98,12,87,29,98,46,87,76,908,567,24,45,78,96,107}
+    fmt.Println(BubbleSort(a))
+}
+
+OUTPUT:-
+
+Bubble sort:[12 23 24 29 43 45 46 65 76 78 87 87 96 98 98 107 567 908]
