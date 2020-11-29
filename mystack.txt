@@ -1,0 +1,33 @@
+package main
+import ("fmt")
+
+type stack struct{
+ items []int
+
+}
+
+func (s* stack) push(i int){
+s.items=append(s.items,i)
+}
+
+func (s* stack) pop() int{
+ l :=(len(s.items)-1)
+ remove := s.items[l-1]
+ s.items =s.items[:l-1]
+ return remove
+}
+
+
+func main(){
+myStack := stack{}
+fmt.Println(myStack)
+ myStack.push(100)
+ myStack.push(50)
+myStack.push(130)
+ myStack.push(10)
+ fmt.Println(myStack)
+ myStack.pop()
+fmt.Println(myStack)
+
+}
+
